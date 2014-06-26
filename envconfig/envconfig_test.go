@@ -10,10 +10,10 @@ import (
 )
 
 type Specification struct {
-	Debug bool
-	Port  int
-	Rate  float32
-	User  string
+	Debug   bool
+	Port    int
+	Rate    float32
+	User    string
 	Servers Strings
 }
 
