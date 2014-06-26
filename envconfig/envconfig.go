@@ -35,6 +35,7 @@ func (e *ParseError) Error() string {
 // generalized solution.
 type Strings []string
 
+// Used in the internal type switch.
 var stringsKind = reflect.TypeOf(Strings{}).Kind()
 
 func Process(prefix string, spec interface{}) error {

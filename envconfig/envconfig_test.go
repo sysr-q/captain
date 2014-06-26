@@ -14,6 +14,7 @@ type Specification struct {
 	Port  int
 	Rate  float32
 	User  string
+	Servers Strings
 }
 
 func TestProcess(t *testing.T) {
@@ -23,6 +24,7 @@ func TestProcess(t *testing.T) {
 	os.Setenv("ENV_CONFIG_PORT", "8080")
 	os.Setenv("ENV_CONFIG_RATE", "0.5")
 	os.Setenv("ENV_CONFIG_USER", "Kelsey")
+	os.Setenv("ENV_CONFIG_SERVERS", "10.0.0.1,10.0.0.2,10.0.0.3")
 	err := Process("env_config", &s)
 	if err != nil {
 		t.Error(err.Error())
@@ -38,6 +40,12 @@ func TestProcess(t *testing.T) {
 	}
 	if s.User != "Kelsey" {
 		t.Errorf("expected %s, got %s", "Kelsey", s.User)
+	}
+	if len(s.Servers) != 3 {
+		t.Errorf("expected %d elements, got %d", 3, len(s.Servers))
+	}
+	if s.Servers[0] != "10.0.0.1" {
+		t.Errorf("expected %s, got %s", "10.0.0.1", s.Servers[0])
 	}
 }
 
