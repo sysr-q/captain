@@ -4,7 +4,8 @@
 package envconfig
 
 type Config struct {
-	// Is this a report server? false == stats, true == report
+	// == "stats" or == "report".
+	Mode   string
 	Report bool
 
 	// Stats
